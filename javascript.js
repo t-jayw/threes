@@ -35,6 +35,9 @@ pickDice = function(x) {
   if ( diceArray[x] == 'X') {
     alert ("you've chosen this already!");
   }
+    else if ( numRolls < 1 ) {
+        alert ("roll first!")
+    }
   else {
       diceChosen += diceArray[x];
       diceLeft--;
