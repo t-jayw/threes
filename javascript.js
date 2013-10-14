@@ -3,12 +3,17 @@ var diceArray = new Array;
 var diceChosen = new Array;
 var numRolls = 0;
 var gameScore = 0;
+var hasPicked = true;
 
 rollDice = function() {
-  if (diceLeft == 0) {
+  if (gameOver()) {
     alert("game over");
   }
+  else if (!hasPicked) {
+    alert("must choose at least one!")
+  }
   else {
+      hasPicked = false;
       var i;
       for (i = 0; i < 6; i++) {
           if (diceArray[i] !== 'X') {
@@ -27,13 +32,19 @@ rollDice = function() {
 }
 
 pickDice = function(x) {
-  diceChosen += diceArray[x];
-  diceLeft--;
-  gameScore += calcScore(diceArray[x]);
-  diceArray[x] = 'X';
-  showRoll(diceArray);
-  showRoll(diceChosen, 'chosen');
-  updateHeader();
+  if ( diceArray[x] == 'X') {
+    alert ("you've chosen this already!");
+  }
+  else {
+      diceChosen += diceArray[x];
+      diceLeft--;
+      gameScore += calcScore(diceArray[x]);
+      diceArray[x] = 'X';
+      showRoll(diceArray);
+      showRoll(diceChosen, 'chosen');
+      updateHeader();
+      hasPicked = true;
+    }
 }
 
 showRoll = function(x, type) {
@@ -66,11 +77,21 @@ updateHeader = function() {
 calcScore = function(dieval) {
   roll = dieval;
   val = 0;
-  if (dieval == 3) {
+  if (dieval == 3 || typeof dieval !== 'number') {
     val += 0;
   }
   else {
     val += dieval;
   }
   return val;
+}
+
+gameOver = function() {
+  if (diceLeft == 0 || numRolls >= 6) {
+    return true;
+  }
+  else {
+    return false;
+  }
+
 }
