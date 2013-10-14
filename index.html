@@ -1,33 +1,40 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>THREES</title>
-        <link rel="stylesheet" href="newcss.css">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script language="javascript" src="newjavascript.js"></script>
-    </head>
-    <body>
-        <div>play dice</div>
-        <FORM> 
-<INPUT type="button" value="roll dice" name="button3" 
-       onClick="javascript:rollDice(); 
-       javascript:printRoll(); return true;"> 
-</FORM> 
-
- <div id="results" >  
-    <div class="die" id="dr_1"></div>
-    <div class="die" id="dr_2"></div>
-    <div class="die" id="dr_3"></div>
-    <div class="die" id="dr_4"></div>
-    <div class="die" id="dr_5"></div>
-    <div class="die" id="dr_6"></div>
- </div>
-	
-
     
+    <body>
+        <div class="main_title">play dice</div>
+      
+        
+<input type="button" id="sBtn" onClick="rollDice();" value="Roll" />
+<div id="dice_remaining" style="display:inline-block;"> ||</div>
+<div id="dice_rolled" style="display:inline-block;"> Rolls 0 ||</div>
+<div id="dice_left" style="display:inline-block;"> Dice Left: 6|| </div>
+<div id="game_score" style="display:inline-block;"> Score 0 ||</div>
+
+ <div id="results" > 
+ <div class="sub_title">your roll</div>
+    <a href="#" onClick="pickDice(0);"><div class="die" id="dr_1"></div></a>
+    <a href="#" onClick="pickDice(1);"><div class="die" id="dr_2"></div></a>
+    <a href="#" onClick="pickDice(2);"><div class="die" id="dr_3"></div></a>
+    <a href="#" onClick="pickDice(3);"><div class="die" id="dr_4"></div></a>
+    <a href="#" onClick="pickDice(4);"><div class="die" id="dr_5"></div></a>
+    <a href="#" onClick="pickDice(5);"><div class="die" id="dr_6"></div></a>
+ </div>
+
+<div>
+<div class="sub_title">your dice</div>
+    <div class="die_chosen" id="chosen_0"></div>
+    <div class="die_chosen" id="chosen_1"></div>
+    <div class="die_chosen" id="chosen_2"></div>
+    <div class="die_chosen" id="chosen_3"></div>
+    <div class="die_chosen" id="chosen_4"></div>
+    <div class="die_chosen" id="chosen_5"></div>
+</div>
+    
+<div class="footer">
+<input type="text" id="wager"  onKeyPress="alert(showArray(diceKept));" />
+<input type="button" id="2Btn" onClick="alert('sup');" value="check1" />
+<input type="button" id="2Btn" onClick="alert(score);" value="checkkeptDice" />
+
+</div>
+
     </body>
 </html>
