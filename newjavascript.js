@@ -1,96 +1,76 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-var diceLeft;
-var score = 0;
-var roll1 = new Array ();
-var chosen;
-var yourDice = Array ();
-
-function xIsInY(x, y) {
-   var xIsInY = false;
-   for(var propertyName in y) {
-      if(x == y[propertyName]) {
-         xIsInY = true;
-         break;
-      }
-   }
-   return xIsInY;
-}
-
-userSelectVerify = function (arrayX, arrayY) { 
-    if (length.arrayX == 0) 
-    {
-        return false;
-    }        
-    else 
-    {     
-        for (var choice in arrayX) {
-            var verified = true;
-            if (!xIsInY(arrayX[choice], arrayY)) {
-                verified = false;
-                break;
-            }
-        } 
-    }
-    return verified;
-    };
-
-userSelect = function () {
-    var userString = 
-        prompt("which would you like to keep?");
-    var aUserString = userString.split(/[\s,]+/);
-    return aUserString;       
-    };
-    
-userScore = function(arrayDice) {
-    var runningScore;
-    for (var dots in yourDice) {
-        if (dots = 3) {
-            runningScore;
-        } else {
-            runningScore += dots;
-        }
-    }
-    return runningScore;
-}
-
-
-Object.size = function(obj) {
-    var size = 0, key;
-    for (key in obj) {
-        if (obj.hasOwnProperty(key)) size++;
-    }
-    return size;
-};
+var diceLeft = 6;
+var diceArray = new Array;
+var diceChosen = new Array;
+var numRolls = 0;
+var gameScore = 0;
 
 rollDice = function() {
-    if (!diceLeft) {
-        diceLeft = 6;
-    };
-    var i;
-    for (i=0; i < diceLeft; i++) {
-    dice = Math.floor(Math.random()*6+1);
-  roll1.push(dice);    
-	}
-};
+  if (diceLeft == 0) {
+    alert("game over");
+  }
+  else {
+      var i;
+      for (i = 0; i < 6; i++) {
+          if (diceArray[i] !== 'X') {
+            diceArray[i] = (Math.floor(Math.random()*6) + 1);   
+            }
+          else {
+            diceArray[i] = diceArray[i];
+          }   
+      } 
+      numRolls++;
 
-printRoll = function() {
-    
-    document.write("<h1>first roll:</h1>");
+      showRoll(diceArray);    
+      updateHeader();
+    }
 
-    for (counter=0; counter < roll1.length; counter++)
-    {
-    document.write("<body.die>" + roll1[counter] + "</body.die><br>");
-    };
-    
-};
-
-userSelect = function() {
-    
 }
 
+pickDice = function(x) {
+  diceChosen += diceArray[x];
+  diceLeft--;
+  gameScore += calcScore(diceArray[x]);
+  diceArray[x] = 'X';
+  showRoll(diceArray);
+  showRoll(diceChosen, 'chosen');
+  updateHeader();
+}
 
+showRoll = function(x, type) {
+    if (type !== 'chosen') {
+        document.getElementById('dr_1').innerHTML = x[0];
+        document.getElementById('dr_2').innerHTML = x[1];
+        document.getElementById('dr_3').innerHTML = x[2];
+        document.getElementById('dr_4').innerHTML = x[3];
+        document.getElementById('dr_5').innerHTML = x[4];
+        document.getElementById('dr_6').innerHTML = x[5];
+   }
+   else {
+        document.getElementById('chosen_0').innerHTML = x[0];
+        document.getElementById('chosen_1').innerHTML = x[1];
+        document.getElementById('chosen_2').innerHTML = x[2];
+        document.getElementById('chosen_3').innerHTML = x[3];
+        document.getElementById('chosen_4').innerHTML = x[4];
+        document.getElementById('chosen_5').innerHTML = x[5];
+   }
+};
+updateHeader = function() {
+    document.getElementById('dice_rolled').innerHTML = 'Rolls: '+ 
+      numRolls + '||';
+    document.getElementById('dice_left').innerHTML = 'Left: '+
+      diceLeft + '||';
+    document.getElementById('game_score').innerHTML = 'Score: '+
+      gameScore + '||';
+}
 
+calcScore = function(dieval) {
+  roll = dieval;
+  val = 0;
+  if (dieval == 3) {
+    val += 0;
+  }
+  else {
+    val += dieval;
+  }
+  return val;
+}
