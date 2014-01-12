@@ -60,21 +60,50 @@ showRoll = function(x, type) {
         document.getElementById('dr_6').innerHTML = x[5];
    }
    else {
+       if (x[0]) {
         document.getElementById('chosen_0').innerHTML = x[0];
-        document.getElementById('chosen_1').innerHTML = x[1];
-        document.getElementById('chosen_2').innerHTML = x[2];
-        document.getElementById('chosen_3').innerHTML = x[3];
-        document.getElementById('chosen_4').innerHTML = x[4];
-        document.getElementById('chosen_5').innerHTML = x[5];
+       }
+       else {
+        document.getElementById('chosen_0').innerHTML = '';
+       }
+        if (x[1]) {
+        	document.getElementById('chosen_1').innerHTML = x[1];
+       }
+       else {
+        document.getElementById('chosen_1').innerHTML = '';
+       }
+        if (x[2]) {
+        	document.getElementById('chosen_2').innerHTML = x[2];
+       }
+       else {
+        document.getElementById('chosen_2').innerHTML = '';
+       }
+       if (x[3]) {
+        	document.getElementById('chosen_3').innerHTML = x[3];
+       }
+       else {
+        document.getElementById('chosen_3').innerHTML = '';
+       }
+       if (x[4]) {
+        	document.getElementById('chosen_4').innerHTML = x[4];
+       }
+       else {
+        document.getElementById('chosen_4').innerHTML = '';
+       }
+        if (x[5]) {
+        	document.getElementById('chosen_5').innerHTML = x[5];
+       }
+       else {
+        document.getElementById('chosen_5').innerHTML = '';
+       }
    }
 };
+
 updateHeader = function() {
     document.getElementById('dice_rolled').innerHTML = 'Rolls: '+ 
-      numRolls + '||';
-    document.getElementById('dice_left').innerHTML = 'Left: '+
-      diceLeft + '||';
+      numRolls;
     document.getElementById('game_score').innerHTML = 'Score: '+
-      gameScore + '||';
+      gameScore;
 }
 
 calcScore = function(dieval) {
@@ -96,5 +125,22 @@ gameOver = function() {
   else {
     return false;
   }
+}
 
+reset = function() {
+	if (!gameOver()) {
+		alert("No quitters!");
+	}
+
+	else {
+	    diceLeft = 6;
+	    diceArray = [];
+	    diceChosen = [];
+	    numRolls = 0;
+	    gameScore = 0;
+	    hasPicked = true;
+	    updateHeader();
+	    rollDice();
+	    showRoll(diceChosen, 'chosen');
+		}
 }
