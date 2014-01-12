@@ -1,40 +1,76 @@
-    
-    <body>
-        <div class="main_title">play dice</div>
-      
+
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#" land="en">
+<head>
+    <title>Tyler Jay Wood</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph tags -->
+
+            <meta property="og:type" content="website"/>
+            <meta property="og:title" content="Tyler Jay Wood"/>
+            <meta property="og:url" content="http://www.tylerjaywood.com"/>
+            <meta property="og:description" content="Tyler Jay Wood"/>
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://www.tylerjaywood.com/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://www.tylerjaywood.com/theme/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://www.tylerjaywood.com/theme/css/pygments.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://www.tylerjaywood.com/theme/css/style.css" type="text/css"/>
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+   <script type='text/javascript' src='/threes/threes.js'></script>
+    <link rel="stylesheet" type="text/css" href="/threes/threes.css">
+</head>
+
+<body>
+<div id="login-flow">
+    <fb:login-button perms="email,offline_access" show-faces="true"></fb:login-button>
+</div>
+<div class="container">
+<div class="entry-content">
+<section id="content">
+    <div class = "body">
+        <div id="container tile">
+            <h5 class="rolled_headline" id="dice_rolled" display="inline-block"> Rolls - 0 </h5>
+            <h5 class="score_headline" id="game_score"  display="inline-block"> Score - 0</h5>
+        <div>
         
-<input type="button" id="sBtn" onClick="rollDice();" value="Roll" />
-<div id="dice_remaining" style="display:inline-block;"> ||</div>
-<div id="dice_rolled" style="display:inline-block;"> Rolls 0 ||</div>
-<div id="dice_left" style="display:inline-block;"> Dice Left: 6|| </div>
-<div id="game_score" style="display:inline-block;"> Score 0 ||</div>
-
- <div id="results" > 
- <div class="sub_title">your roll</div>
-    <a href="#" onClick="pickDice(0);"><div class="die" id="dr_1"></div></a>
-    <a href="#" onClick="pickDice(1);"><div class="die" id="dr_2"></div></a>
-    <a href="#" onClick="pickDice(2);"><div class="die" id="dr_3"></div></a>
-    <a href="#" onClick="pickDice(3);"><div class="die" id="dr_4"></div></a>
-    <a href="#" onClick="pickDice(4);"><div class="die" id="dr_5"></div></a>
-    <a href="#" onClick="pickDice(5);"><div class="die" id="dr_6"></div></a>
- </div>
-
-<div>
-<div class="sub_title">your dice</div>
-    <div class="die_chosen" id="chosen_0"></div>
-    <div class="die_chosen" id="chosen_1"></div>
-    <div class="die_chosen" id="chosen_2"></div>
-    <div class="die_chosen" id="chosen_3"></div>
-    <div class="die_chosen" id="chosen_4"></div>
-    <div class="die_chosen" id="chosen_5"></div>
-</div>
+        <input type="button"  class="btn btn-primary"  onClick="rollDice();" value="Roll"/>
+    </div>
     
-<div class="footer">
-<input type="text" id="wager"  onKeyPress="alert(showArray(diceKept));" />
-<input type="button" id="2Btn" onClick="alert('sup');" value="check1" />
-<input type="button" id="2Btn" onClick="alert(score);" value="checkkeptDice" />
-
-</div>
-
-    </body>
-</html>
+    <div id="results" > 
+        <div class="sub_title">your roll</div>
+        <a href="#" onClick="pickDice(0);"><div class="die btn" id="dr_1"></div></a>
+        <a href="#" onClick="pickDice(1);"><div class="btn die" id="dr_2"></div></a>
+        <a href="#" onClick="pickDice(2);"><div class="btn die" id="dr_3"></div></a>
+        <a href="#" onClick="pickDice(3);"><div class="btn die" id="dr_4"></div></a>
+        <a href="#" onClick="pickDice(4);"><div class="btn die" id="dr_5"></div></a>
+        <a href="#" onClick="pickDice(5);"><div class="btn die" id="dr_6"></div></a>
+        
+        <div class="sub_title">your dice</div>
+        <div class="btn die_chosen" id="chosen_0"></div>
+        <div class="btn die_chosen" id="chosen_1"></div>
+        <div class="btn die_chosen" id="chosen_2"></div>
+        <div class="btn die_chosen" id="chosen_3"></div>
+        <div class="btn die_chosen" id="chosen_4"></div>
+        <div class="btn die_chosen" id="chosen_5"></div>
+        </div>
+         <br>
+        <input type="button" class="btn btn-danger" onClick="reset();" value="play again" />
+    </div>
+<br>
+<h7>The game is played as follows: <br>
+To start the game, the player rolls 6 dice. The player must select at least one die per roll.  The player, after selecting their die or dice from the previous roll, then rolls the remaining, unselected, dice.  This is repeated until all dice have been selected and none are left to roll.  The player's score is the sum of all selected dice after all 6 have been chosen, with the exception of THREES which are worth 0 points.  The aim is to end with as low of a score as possible.
+<br><br>
+>= 8 - are you trying?<br>
+8 >= 5 - not too shabby.<br>
+4 >= 2 - now we're talking!<br>
+1 or 0 - Are you a wizard?
+</div class="container">
+</div class="entry-content">
+</section>
+</body>
